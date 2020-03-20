@@ -38,30 +38,6 @@ This program provides the implementation of the relational memory-based model R-
 		
 	$ python train_R_MeN_TripleCls_CNN.py --name FB13 --embedding_dim 50 --num_epochs 30 --batch_size 256 --head_size 1024 --memory_slots 1 --num_heads 2 --attention_mlp_layers 4 --num_filters 1024 --learning_rate 0.000005 --model_name fb13_d50_bs256_f1024_mlp4_hs1024_1_2_5
 
-**Required parameters:** 
-
-`--embedding_dim`: The dimension of entity and relation embeddings (Default: 50).
-
-`--learning_rate`: The Adam initial learning rate.
-
-`--name`: The dataset name (WN11 or FB13).
-
-`--model_name`: The name of saved models.
-
-`--num_epochs`: The number of training epochs.
-
-`--batch_size`: The batch size.
-
-`--head_size`: The head size.
-
-`--memory_slots`: The number of memory slots.
-
-`--num_heads`: The number of attention heads.
-
-`--attention_mlp_layers`: The number of MLP layers.
-
-`--num_filters`: The number of filters in the CNN-based decoder.
-
 ## License
 
 Please cite the paper whenever R-Men is used to produce published results or incorporated into other software. As a free open-source implementation, R-Men is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. All other warranties including, but not limited to, merchantability and fitness for purpose, whether express, implied, or arising by operation of law, course of dealing, or trade usage are hereby disclaimed. I believe that the programs compute what I claim they compute, but I do not guarantee this. The programs may be poorly and inconsistently documented and may contain undocumented components, features or modifications. I make no guarantee that these programs will be suitable for any application.
