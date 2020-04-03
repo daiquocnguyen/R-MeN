@@ -11,7 +11,7 @@
 <a href="https://github.com/daiquocnguyen/R-MeN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/daiquocnguyen/R-MeN"></a>
 <img alt="GitHub" src="https://img.shields.io/github/license/daiquocnguyen/R-MeN">
 
-This program provides the implementation of the relational memory-based model R-MeN as described in [the paper]() where we integrate self-attetion mechanism-based memory interactions with a CNN decoder to effectively capture potential dependencies among relations and entities.
+This program provides the implementation of the relational memory-based model R-MeN as described in [the paper](https://arxiv.org/abs/1907.06080) where we integrate self-attetion mechanism-based memory interactions with a CNN decoder to effectively capture potential dependencies among relations and entities.
         
 <p align="center">
 	<img src="https://github.com/daiquocnguyen/R-Men/blob/master/rmen.png" width="350">
@@ -38,7 +38,7 @@ Please cite the paper whenever R-Men is used to produce published results or inc
 	@InProceedings{Nguyen2019RMeN,
           author={Dai Quoc Nguyen and Tu Dinh Nguyen and Dinh Phung},
           title={{A Relational Memory-based Embedding Model for Triple Classification and Search Personalization}},
-          booktitle={arxiv},
+          booktitle={arXiv preprint arXiv:1907.06080},
           year={2019}
           }
 
