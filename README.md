@@ -35,11 +35,11 @@ This program provides the implementation of the relational memory-based model R-
 
 Please cite the paper whenever R-Men is used to produce published results or incorporated into other software:
 
-	@InProceedings{Nguyen2019RMeN,
+	@InProceedings{Nguyen2020RMeN,
           author={Dai Quoc Nguyen and Tu Dinh Nguyen and Dinh Phung},
           title={{A Relational Memory-based Embedding Model for Triple Classification and Search Personalization}},
-          booktitle={arXiv preprint arXiv:1907.06080},
-          year={2019}
+          booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
+          year={2020}
           }
 
 ## License
