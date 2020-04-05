@@ -11,7 +11,7 @@
 <a href="https://github.com/daiquocnguyen/R-MeN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/daiquocnguyen/R-MeN"></a>
 <img alt="GitHub" src="https://img.shields.io/github/license/daiquocnguyen/R-MeN">
 
-This program provides the implementation of the relational memory-based model R-MeN as described in [the paper](https://arxiv.org/abs/1907.06080) where we integrate self-attention mechanism-based memory interactions with a CNN decoder to effectively capture potential dependencies among relations and entities.
+This program provides the implementation of the relational memory-based model R-MeN as described in [the paper](https://arxiv.org/abs/1907.06080) where we integrate transformer self-attention mechanism-based memory interactions with a CNN decoder to effectively capture potential dependencies among relations and entities.
         
 <p align="center">
 	<img src="https://github.com/daiquocnguyen/R-Men/blob/master/rmen.png" width="350">
