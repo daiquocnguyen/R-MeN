@@ -17,6 +17,9 @@ This program provides the implementation of our KG embedding model R-MeN as desc
 	<img src="https://github.com/daiquocnguyen/R-MeN/blob/master/rmen.png" width="350">
 </p>
 
+## News
+- The Tensorflow was completed one year ago and now out-of-date. I will release the Pytorch implementation of R-MeN as soon as possible.
+
 ## Usage
 
 ### Requirements
