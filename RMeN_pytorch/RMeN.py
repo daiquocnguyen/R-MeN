@@ -84,7 +84,7 @@ class RMeN(Model):
         conv_input = hrt.transpose(1, 2)
         # To make tensor of size 4, where second dim is for input channels
         conv_input = conv_input.unsqueeze(1)
-
+        # CNN decoder
         out_conv = self.non_linearity(self.conv_layer(conv_input))
         out_conv = out_conv.squeeze(-1)
         out_conv = F.max_pool1d(out_conv, out_conv.size(2)).squeeze(-1)
