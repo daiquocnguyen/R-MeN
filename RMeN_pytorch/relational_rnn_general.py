@@ -3,7 +3,7 @@ from torch import nn
 import torch.nn.functional as F
 import numpy as np
 
-"""This implementation is taken from https://github.com/L0SG/relational-rnn-pytorch/"""
+"""This file is taken from https://github.com/L0SG/relational-rnn-pytorch/blob/master/relational_rnn_general.py"""
 
 # this class largely follows the official sonnet implementation
 # https://github.com/deepmind/sonnet/blob/master/sonnet/python/modules/relational_memory.py
