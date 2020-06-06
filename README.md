@@ -18,13 +18,13 @@ This program provides the implementation of our KG embedding model R-MeN as desc
 </p>
 
 ## News
-- The Tensorflow was completed one year ago and now out-of-date. I will release the Pytorch implementation of R-MeN as soon as possible.
+- The reported results were obtained using the Tensorflow implementation one year ago. Now the Tensorflow implementation is out-of-date, caused by the change of Tensorflow from 1.x to 2.x . I will release the Pytorch implementation of R-MeN as soon as possible.
 
 ## Usage
 
 ### Requirements
 - Python 3.x
-- Tensorflow 1.14
+- Tensorflow 1.13
 - dm-sonnet 1.34
 - scipy 1.3
 
