@@ -11,7 +11,7 @@
 <a href="https://github.com/daiquocnguyen/R-MeN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/daiquocnguyen/R-MeN"></a>
 <img alt="GitHub" src="https://img.shields.io/github/license/daiquocnguyen/R-MeN">
 
-This program provides the implementation of our KG embedding model R-MeN as described in [the paper](https://arxiv.org/abs/1907.06080), where we integrate transformer-based memory interactions with a CNN decoder to capture potential dependencies among relations and entities effectively for triple classification and search personalization.
+This program provides the implementation of our KG embedding model R-MeN as described in [the paper](https://arxiv.org/abs/1907.06080), where we integrate transformer-based memory interactions with a CNN decoder to effectively capture potential dependencies among relations and entities in knowledge graphs.
         
 <p align="center">
 	<img src="https://github.com/daiquocnguyen/R-MeN/blob/master/rmen.png" width="350">
@@ -19,7 +19,7 @@ This program provides the implementation of our KG embedding model R-MeN as desc
 
 ## News
 - June 06: Update Pytorch (1.5.0) implementation. This implementation is based on the OpenKE framework.
-- April 04: The reported results were obtained using the Tensorflow implementation one year ago. Now the Tensorflow implementation is out-of-date, caused by the change of Tensorflow from 1.x to 2.x. I will release the Pytorch implementation of R-MeN as soon as possible.
+- April 04: The published results were obtained using the Tensorflow implementation one year ago. Now the Tensorflow implementation is out-of-date, caused by the change of Tensorflow from 1.x to 2.x.
 
 ## Usage
 
