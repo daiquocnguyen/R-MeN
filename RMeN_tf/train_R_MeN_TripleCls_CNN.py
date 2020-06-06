@@ -140,7 +140,7 @@ with tf.Graph().as_default():
         grads_and_vars = optimizer.compute_gradients(r_men.loss)
         train_op = optimizer.apply_gradients(grads_and_vars, global_step=global_step)
 
-        out_dir = os.path.abspath(os.path.join(args.run_folder, "runs_RMeN_TripleCls_ConvKB_max_pool", args.model_name))
+        out_dir = os.path.abspath(os.path.join(args.run_folder, "runs_RMeN_TripleCls_CNN_max_pool", args.model_name))
         print("Writing to {}\n".format(out_dir))
 
         # Checkpoint directory. Tensorflow assumes this directory already exists so we need to create it
