@@ -19,13 +19,13 @@ This program provides the implementation of our KG embedding model R-MeN as desc
 
 ## News
 - June 06: Update Pytorch (1.5.0) implementation. This implementation is based on the OpenKE framework.
-- April 04: The published results were obtained using the Tensorflow implementation one year ago. Now the Tensorflow implementation is out-of-date, caused by the change of Tensorflow from 1.x to 2.x.
+- April 04: The Tensorflow implementation was completed one year ago, and now it is out-of-date, caused by the change of Tensorflow from 1.x to 2.x.
 
 ## Usage
 
 ### Requirements
 - Python 3.x
-- Tensorflow 1.13
+- Tensorflow 1.x
 - dm-sonnet 1.34
 - scipy 1.3
 
