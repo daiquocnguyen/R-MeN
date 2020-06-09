@@ -36,7 +36,7 @@ class RMeN(Model):
                         gate_style=self.config.gate_style, attention_mlp_layers=self.config.attention_mlp_layers,
                         return_all_outputs=True
                         ).to(device)
-        self.model_memory = self.transformer_rel_rnn.initial_state(config.batch_seq_size).to(device)
+        self.model_memory = self.transformer_rel_rnn.initial_state(self.config.batch_seq_size).to(device)
 
         self.conv_layer = nn.Conv2d(1, self.config.out_channels, (1, 3))  # kernel size -> 1*input_seq_length(i.e. 2)
         self.dropout = nn.Dropout(self.config.convkb_drop_prob)
@@ -64,7 +64,7 @@ class RMeN(Model):
             h = h + self.pos_h
             r = r + self.pos_r
             t = t + self.pos_t
-        bs = h.size(0)
+
         h = h.unsqueeze(1) # bs x 1 x dim
         r = r.unsqueeze(1)
         t = t.unsqueeze(1)
@@ -73,8 +73,7 @@ class RMeN(Model):
         # forward pass
         # replace "model_memory" by "_" if you want to make the RNN stateful
         trans_rel_rnn_output, self.model_memory = self.transformer_rel_rnn(hrt, self.model_memory) # concatenate outputs (h, r, t) dim 0 --> (3xbs) x (head_size * num_head)
-
-        h, r, t = torch.split(trans_rel_rnn_output, bs, dim=0)
+        h, r, t = torch.split(trans_rel_rnn_output, self.config.batch_seq_size, dim=0)
 
         h = h.unsqueeze(1)  # bs x 1 x dim
         r = r.unsqueeze(1)
@@ -84,12 +83,12 @@ class RMeN(Model):
         conv_input = hrt.transpose(1, 2)
         # To make tensor of size 4, where second dim is for input channels
         conv_input = conv_input.unsqueeze(1)
-        # CNN decoder
+
         out_conv = self.non_linearity(self.conv_layer(conv_input))
         out_conv = out_conv.squeeze(-1)
         out_conv = F.max_pool1d(out_conv, out_conv.size(2)).squeeze(-1)
         input_fc = self.dropout(out_conv)
-        score = self.fc_layer(input_fc)
+        score = self.fc_layer(input_fc).view(-1)
 
         return -score
 
@@ -110,20 +109,33 @@ class RMeN(Model):
             l2_reg = l2_reg + W.norm(2)
         for W in self.transformer_rel_rnn.parameters():
             l2_reg = l2_reg + W.norm(2)
-        # for W in self.pos_h:
-        #     l2_reg = l2_reg + W.norm(2)
-        # for W in self.pos_r:
-        #     l2_reg = l2_reg + W.norm(2)
-        # for W in self.pos_t:
-        #     l2_reg = l2_reg + W.norm(2)
-
+        # should tune whether or not using a regularization on positional embeddings
+        for W in self.pos_h:
+            l2_reg = l2_reg + W.norm(2)
+        for W in self.pos_r:
+            l2_reg = l2_reg + W.norm(2)
+        for W in self.pos_t:
+            l2_reg = l2_reg + W.norm(2)
 
         return self.loss(score, l2_reg)
 
     def predict(self):
-        h = self.ent_embeddings(self.batch_h)
-        r = self.rel_embeddings(self.batch_r)
-        t = self.ent_embeddings(self.batch_t)
-        score = self._calc(h, r, t)
+        output = []
+        idx = np.arange(len(self.batch_h))
+        # Transformer-based relational memory uses a memory of batch_size, not a dynamic batch size
+        for i in range(0, len(self.batch_h), self.config.batch_seq_size):
+            sampled_idx = idx[i:i+self.config.batch_seq_size]
+            if len(sampled_idx) == 0:
+                continue
+            while len(sampled_idx) < self.config.batch_seq_size:
+                sampled_idx = np.append(sampled_idx, sampled_idx[-1])
 
-        return score
+            h = self.ent_embeddings(self.batch_h[sampled_idx])
+            r = self.rel_embeddings(self.batch_r[sampled_idx])
+            t = self.ent_embeddings(self.batch_t[sampled_idx])
+            score = self._calc(h, r, t)
+
+            output.append(score)
+
+        score = torch.cat(output)[:len(self.batch_h)]
+        return score.cpu().data.numpy()
