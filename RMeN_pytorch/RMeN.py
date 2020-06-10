@@ -127,7 +127,7 @@ class RMeN(Model):
             sampled_idx = idx[i:i+self.config.batch_seq_size]
             if len(sampled_idx) == 0:
                 continue
-            while len(sampled_idx) < self.config.batch_seq_size:
+            while len(sampled_idx) < self.config.batch_seq_size:  # for the last split
                 sampled_idx = np.append(sampled_idx, sampled_idx[-1])
 
             h = self.ent_embeddings(self.batch_h[sampled_idx])
