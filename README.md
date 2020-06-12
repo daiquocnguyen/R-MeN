@@ -11,7 +11,7 @@
 <a href="https://github.com/daiquocnguyen/R-MeN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/daiquocnguyen/R-MeN"></a>
 <img alt="GitHub" src="https://img.shields.io/github/license/daiquocnguyen/R-MeN">
 
-This program provides the implementation of our KG embedding model R-MeN as described in [the paper](https://arxiv.org/abs/1907.06080), where we integrate transformer-based memory interactions with a CNN decoder to effectively capture potential dependencies among relations and entities in knowledge graphs.
+This program provides the implementation of our KG embedding model R-MeN as described in [the paper](https://arxiv.org/abs/1907.06080). Our proposed R-MeN integrates transformer-based memory interactions with a CNN decoder to effectively capture potential dependencies among relations and entities in knowledge graphs.
         
 <p align="center">
 	<img src="https://github.com/daiquocnguyen/R-MeN/blob/master/rmen.png" width="350">
@@ -39,12 +39,12 @@ This program provides the implementation of our KG embedding model R-MeN as desc
 
 Please cite the paper whenever R-MeN is used to produce published results or incorporated into other software:
 
-	@InProceedings{Nguyen2020RMeN,
-          author={Dai Quoc Nguyen and Tu Dinh Nguyen and Dinh Phung},
-          title={{A Relational Memory-based Embedding Model for Triple Classification and Search Personalization}},
-          booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
-          year={2020}
-          }
+	@inproceedings{Nguyen2020RMeN,
+		author={Dai Quoc Nguyen and Tu Dinh Nguyen and Dinh Phung},
+		title={{A Relational Memory-based Embedding Model for Triple Classification and Search Personalization}},
+		booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
+		year={2020}
+	}
 
 ## License
 
