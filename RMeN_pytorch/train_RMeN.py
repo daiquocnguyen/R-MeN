@@ -93,6 +93,10 @@ if args.mode == "train":
         con.training_triple_classification()
 
 else:
+    con.set_config_CNN(num_of_filters=args.num_of_filters, drop_prob=args.dropout,
+                       mem_slots=args.memory_slots, head_size=args.head_size, num_heads=args.num_heads,
+                       attention_mlp_layers=args.attention_mlp_layers, use_pos=args.use_pos, gate_style='memory')
+
     con.set_test_model(RMeN, args.checkpoint_path)
     con.test()
 
