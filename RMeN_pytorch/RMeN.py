@@ -38,7 +38,9 @@ class RMeN(Model):
                         ).to(device)
         self.model_memory = self.transformer_rel_rnn.initial_state(self.config.batch_seq_size).to(device)
 
-        self.conv_layer = nn.Conv2d(1, self.config.out_channels, (1, 3))  # kernel size -> 1*input_seq_length(i.e. 2)
+        self.conv1_bn = nn.BatchNorm2d(1)
+        self.conv_layer = nn.Conv2d(1, self.config.out_channels, (1, 3))  # kernel size x 3
+        self.conv2_bn = nn.BatchNorm2d(self.config.out_channels)
         self.dropout = nn.Dropout(self.config.convkb_drop_prob)
         self.non_linearity = nn.ReLU()
         self.fc_layer = nn.Linear(self.config.out_channels, 1)
@@ -83,8 +85,10 @@ class RMeN(Model):
         conv_input = hrt.transpose(1, 2)
         # To make tensor of size 4, where second dim is for input channels
         conv_input = conv_input.unsqueeze(1)
-
-        out_conv = self.non_linearity(self.conv_layer(conv_input))
+        conv_input = self.conv1_bn(conv_input)
+        out_conv = self.conv_layer(conv_input)
+        out_conv = self.conv2_bn(out_conv)
+        out_conv = self.non_linearity(out_conv)
         out_conv = out_conv.squeeze(-1)
         out_conv = F.max_pool1d(out_conv, out_conv.size(2)).squeeze(-1)
         input_fc = self.dropout(out_conv)
