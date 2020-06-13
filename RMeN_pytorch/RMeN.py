@@ -54,7 +54,6 @@ class RMeN(Model):
             nn.init.xavier_uniform_(self.rel_embeddings.weight.data)
 
         else:
-            assert self.config.hidden_size == self.config.entity_embs.size(1)
             self.ent_embeddings.weight.data = self.config.init_ent_embs
             self.rel_embeddings.weight.data = self.config.init_rel_embs
 

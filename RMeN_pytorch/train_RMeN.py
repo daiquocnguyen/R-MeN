@@ -29,7 +29,7 @@ parser.add_argument("--head_size", default=64, type=int, help="")
 parser.add_argument("--gate_style", default='memory', help="unit,memory")
 parser.add_argument("--attention_mlp_layers", default=2, type=int, help="2 3 4")
 parser.add_argument("--use_pos", default=1, type=int, help="1 when using positional embeddings. Otherwise.")
-
+parser.add_argument('--use_init', default=1, type=int, help='')
 args = parser.parse_args()
 
 print(args)
@@ -71,8 +71,66 @@ con.set_result_dir(result_dir)
 con.set_test_link(True)
 con.init()
 
+def get_term_id(filename):
+    entity2id = {}
+    id2entity = {}
+    with open(filename) as f:
+        for line in f:
+            if len(line.strip().split()) > 1:
+                tmp = line.strip().split()
+                entity2id[tmp[0]] = int(tmp[1])
+                id2entity[int(tmp[1])] = tmp[0]
+    return entity2id, id2entity
+
+def get_init_embeddings(relinit, entinit):
+    lstent = []
+    lstrel = []
+    with open(relinit) as f:
+        for line in f:
+            tmp = [float(val) for val in line.strip().split()]
+            lstrel.append(tmp)
+    with open(entinit) as f:
+        for line in f:
+            tmp = [float(val) for val in line.strip().split()]
+            lstent.append(tmp)
+    return np.array(lstent, dtype=np.float32), np.array(lstrel, dtype=np.float32)
+
+
 if args.mode == "train":
-    # con.set_init_embeddings(entity_embs, rel_embs)
+
+    if args.use_init:
+        hidden_size = "100"
+        con.set_dimension(100)
+        if args.dataset == "WN18RR":
+            hidden_size = "50"
+            con.set_dimension(50)
+
+        init_entity_embs, init_relation_embs = get_init_embeddings(
+            "./benchmarks/" + args.dataset + "/relation2vec"+hidden_size+".init",
+            "./benchmarks/" + args.dataset + "/entity2vec"+hidden_size+".init")
+
+        e2id, id2e = get_term_id(filename="./benchmarks/" + args.dataset + "/entity2id.txt")
+        e2id50, id2e50 = get_term_id(filename="./benchmarks/" + args.dataset + "/entity2id_"+hidden_size+"init.txt")
+        assert len(e2id) == len(e2id50)
+
+        entity_embs = np.empty([len(e2id), con.hidden_size]).astype(np.float32)
+        for i in range(len(e2id)):
+            _word = id2e[i]
+            id = e2id50[_word]
+            entity_embs[i] = init_entity_embs[id]
+
+        r2id, id2r = get_term_id(filename="./benchmarks/" + args.dataset + "/relation2id.txt")
+        r2id50, id2r50 = get_term_id(filename="./benchmarks/" + args.dataset + "/relation2id_"+hidden_size+"init.txt")
+        assert len(r2id) == len(r2id50)
+
+        rel_embs = np.empty([len(r2id), con.hidden_size]).astype(np.float32)
+        for i in range(len(r2id)):
+            _rel = id2r[i]
+            id = r2id50[_rel]
+            rel_embs[i] = init_relation_embs[id]
+
+        con.set_init_embeddings(entity_embs, rel_embs)
+
     con.set_config_CNN(num_of_filters=args.num_of_filters, drop_prob=args.dropout,
                 mem_slots=args.memory_slots, head_size=args.head_size, num_heads=args.num_heads,
                 attention_mlp_layers=args.attention_mlp_layers, use_pos=args.use_pos, gate_style='memory')
@@ -81,6 +139,13 @@ if args.mode == "train":
     con.training_model()
 
 else:
+    if args.use_init:
+        hidden_size = "100"
+        con.set_dimension(100)
+        if args.dataset == "WN18RR":
+            hidden_size = "50"
+            con.set_dimension(50)
+
     con.set_config_CNN(num_of_filters=args.num_of_filters, drop_prob=args.dropout,
                        mem_slots=args.memory_slots, head_size=args.head_size, num_heads=args.num_heads,
                        attention_mlp_layers=args.attention_mlp_layers, use_pos=args.use_pos, gate_style='memory')
