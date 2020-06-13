@@ -32,13 +32,6 @@ parser.add_argument("--use_pos", default=1, type=int, help="1 when using positio
 
 args = parser.parse_args()
 
-if args.model_name is None or len(args.model_name.strip()) == 0:
-    args.model_name = "{}_lda-{}_nneg-{}_hs-{}_lr-{}_nepochs-{}".format(args.dataset,
-                                                                        args.lmbda,
-                                                                        args.neg_num,
-                                                                        args.hidden_size,
-                                                                        args.learning_rate,
-                                                                        args.num_epochs)
 print(args)
 
 out_dir = os.path.abspath(os.path.join("../runs_RMeN/"))
