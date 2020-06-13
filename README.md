@@ -18,7 +18,9 @@ This program provides the implementation of our KG embedding model R-MeN as desc
 </p>
 
 ## News
-- June 06: Update Pytorch (1.5.0) implementation. This implementation is based on the OpenKE framework and can produce better results.
+
+- June 06: Update Pytorch (1.5.0) implementation. This implementation, which is based on the OpenKE framework, is to adapt to the knowledge graph completion task.
+
 - April 04: The Tensorflow implementation was completed one year ago, and now it is out-of-date, caused by the change of Tensorflow from 1.x to 2.x.
 
 ## Usage
