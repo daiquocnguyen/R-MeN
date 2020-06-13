@@ -75,9 +75,7 @@ con.set_early_stopping_patience(10)
 con.set_checkpoint_dir(checkpoint_dir)
 con.set_result_dir(result_dir)
 #set True for the knowledge graph completion task
-con.set_test_link(False)
-#set True for the triple classification task
-con.set_test_triple(True)
+con.set_test_link(True)
 con.init()
 
 if args.mode == "train":
@@ -87,10 +85,7 @@ if args.mode == "train":
                 attention_mlp_layers=args.attention_mlp_layers, use_pos=args.use_pos, gate_style='memory')
 
     con.set_train_model(RMeN)
-    if con.test_triple == False:
-        con.training_model()
-    else:
-        con.training_triple_classification()
+    con.training_model()
 
 else:
     con.set_config_CNN(num_of_filters=args.num_of_filters, drop_prob=args.dropout,
