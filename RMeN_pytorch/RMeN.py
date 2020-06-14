@@ -72,8 +72,7 @@ class RMeN(Model):
         hrt = torch.cat([h, r, t], 1)  # bs x 3 x dim
 
         # forward pass
-        # replace "model_memory" by "_" if you want to make the RNN stateful
-        trans_rel_rnn_output, self.model_memory = self.transformer_rel_rnn(hrt, self.model_memory) # concatenate outputs (h, r, t) dim 0 --> (3xbs) x (head_size * num_head)
+        trans_rel_rnn_output, _ = self.transformer_rel_rnn(hrt, self.model_memory) # concatenate outputs (h, r, t) dim 0 --> (3xbs) x (head_size * num_head)
         h, r, t = torch.split(trans_rel_rnn_output, self.config.batch_seq_size, dim=0)
 
         h = h.unsqueeze(1)  # bs x 1 x dim
@@ -110,15 +109,15 @@ class RMeN(Model):
             l2_reg = l2_reg + W.norm(2)
         for W in self.fc_layer.parameters():
             l2_reg = l2_reg + W.norm(2)
-        for W in self.transformer_rel_rnn.parameters():
-            l2_reg = l2_reg + W.norm(2)
-        # should tune whether or not using a regularization on positional embeddings
-        for W in self.pos_h:
-            l2_reg = l2_reg + W.norm(2)
-        for W in self.pos_r:
-            l2_reg = l2_reg + W.norm(2)
-        for W in self.pos_t:
-            l2_reg = l2_reg + W.norm(2)
+        # for W in self.transformer_rel_rnn.parameters():
+        #     l2_reg = l2_reg + W.norm(2)
+        # # should tune whether or not using a regularization on positional embeddings
+        # for W in self.pos_h:
+        #     l2_reg = l2_reg + W.norm(2)
+        # for W in self.pos_r:
+        #     l2_reg = l2_reg + W.norm(2)
+        # for W in self.pos_t:
+        #     l2_reg = l2_reg + W.norm(2)
 
         return self.loss(score, l2_reg)
 
