@@ -12,7 +12,7 @@ parser.add_argument("--nbatches", default=100, type=int, help="Number of batches
 parser.add_argument("--num_epochs", default=400, type=int, help="Number of training epochs")
 parser.add_argument("--model_name", default='RMeN', help="")
 parser.add_argument('--neg_num', default=1, type=int, help='')
-parser.add_argument('--hidden_size', type=int, default=32, help='')
+parser.add_argument('--hidden_size', type=int, default=50, help='')
 parser.add_argument('--num_of_filters', type=int, default=100, help='')
 parser.add_argument('--dropout', type=float, default=0.5, help='')
 parser.add_argument('--save_steps', type=int, default=1000, help='')
