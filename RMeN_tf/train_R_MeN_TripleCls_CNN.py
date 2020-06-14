@@ -135,8 +135,6 @@ with tf.Graph().as_default():
 
         #Optimizer
         optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=args.learning_rate)
-        # optimizer = tf.train.RMSPropOptimizer(learning_rate=args.learning_rate)
-        # optimizer = tf.train.GradientDescentOptimizer(learning_rate=args.learning_rate)
         grads_and_vars = optimizer.compute_gradients(r_men.loss)
         train_op = optimizer.apply_gradients(grads_and_vars, global_step=global_step)
 
