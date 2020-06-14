@@ -28,7 +28,7 @@ parser.add_argument("--memory_slots", default=1, type=int, help="Number of memor
 parser.add_argument("--head_size", default=64, type=int, help="")
 parser.add_argument("--gate_style", default='memory', help="unit,memory")
 parser.add_argument("--attention_mlp_layers", default=2, type=int, help="2 3 4")
-parser.add_argument("--use_pos", default=0, type=int, help="1 when using positional embeddings. Otherwise 0.")
+parser.add_argument("--use_pos", default=1, type=int, help="1 when using positional embeddings. Otherwise 0.")
 parser.add_argument('--use_init', default=1, type=int, help='')
 args = parser.parse_args()
 

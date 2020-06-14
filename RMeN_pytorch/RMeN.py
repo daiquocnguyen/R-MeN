@@ -109,15 +109,6 @@ class RMeN(Model):
             l2_reg = l2_reg + W.norm(2)
         for W in self.fc_layer.parameters():
             l2_reg = l2_reg + W.norm(2)
-        # for W in self.transformer_rel_rnn.parameters():
-        #     l2_reg = l2_reg + W.norm(2)
-        # # should tune whether or not using a regularization on positional embeddings
-        # for W in self.pos_h:
-        #     l2_reg = l2_reg + W.norm(2)
-        # for W in self.pos_r:
-        #     l2_reg = l2_reg + W.norm(2)
-        # for W in self.pos_t:
-        #     l2_reg = l2_reg + W.norm(2)
 
         return self.loss(score, l2_reg)
 
