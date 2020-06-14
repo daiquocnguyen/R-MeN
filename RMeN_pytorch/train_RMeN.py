@@ -7,7 +7,7 @@ import os
 from argparse import ArgumentParser
 parser = ArgumentParser("RMeN")
 parser.add_argument("--dataset", default="WN18RR", help="Name of the dataset.")
-parser.add_argument("--learning_rate", default=0.05, type=float, help="Learning rate")
+parser.add_argument("--learning_rate", default=0.005, type=float, help="Learning rate")
 parser.add_argument("--nbatches", default=100, type=int, help="Number of batches")
 parser.add_argument("--num_epochs", default=400, type=int, help="Number of training epochs")
 parser.add_argument("--model_name", default='RMeN', help="")
