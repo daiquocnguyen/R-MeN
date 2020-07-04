@@ -1,0 +1,5 @@
+python train_R_MeN_TripleCls.py --name WN11 --embedding_dim 50 --num_epochs 30 --batch_size 16 --head_size 512 --memory_slots 1 --num_heads 4 --attention_mlp_layers 4 --learning_rate 0.0001 --model_name wn11_v1
+
+python train_R_MeN_TripleCls.py --name FB13 --embedding_dim 50 --num_epochs 30 --batch_size 256 --head_size 1024 --memory_slots 1 --num_heads 1 --attention_mlp_layers 3 --learning_rate 0.000001 --model_name fb13_v1
+
+Details are in v1: https://arxiv.org/pdf/1907.06080v1.pdf
