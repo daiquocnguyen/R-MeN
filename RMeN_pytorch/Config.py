@@ -271,8 +271,8 @@ class Config(object):
         self.init_ent_embs = torch.from_numpy(entity_embs).to(device)
         self.init_rel_embs = torch.from_numpy(rel_embs).to(device)
 
-    def set_config_CNN(self, num_of_filters, drop_prob, mem_slots, head_size, num_heads,
-                        attention_mlp_layers, use_pos, gate_style='memory'):
+    def set_config_CNN(self, drop_prob, mem_slots, head_size, num_heads,
+                        attention_mlp_layers, use_pos, gate_style='memory', num_of_filters=0):
         self.out_channels = num_of_filters
         self.convkb_drop_prob = drop_prob
         self.mem_slots = mem_slots

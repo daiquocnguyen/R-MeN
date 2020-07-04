@@ -38,12 +38,8 @@ class RMeN(Model):
                         ).to(device)
         self.model_memory = self.transformer_rel_rnn.initial_state(self.config.batch_seq_size).to(device)
 
-        self.conv1_bn = nn.BatchNorm2d(1)
-        self.conv_layer = nn.Conv2d(1, self.config.out_channels, (1, 3))  # kernel size x 3
-        self.conv2_bn = nn.BatchNorm2d(self.config.out_channels)
         self.dropout = nn.Dropout(self.config.convkb_drop_prob)
-        self.non_linearity = nn.ReLU()
-        self.fc_layer = nn.Linear(self.config.out_channels, 1)
+        self.fc_layer = nn.Linear(self.transformer_rel_rnn.mem_size, 1)
 
         self.criterion = nn.Softplus()
         self.init_parameters()
@@ -58,7 +54,6 @@ class RMeN(Model):
             self.rel_embeddings.weight.data = self.config.init_rel_embs
 
         nn.init.xavier_uniform_(self.fc_layer.weight.data)
-        nn.init.xavier_uniform_(self.conv_layer.weight.data)
 
     def _calc(self, h, r, t):
         if self.config.use_pos:
@@ -75,21 +70,7 @@ class RMeN(Model):
         trans_rel_rnn_output, _ = self.transformer_rel_rnn(hrt, self.model_memory) # concatenate outputs (h, r, t) dim 0 --> (3xbs) x (head_size * num_head)
         h, r, t = torch.split(trans_rel_rnn_output, self.config.batch_seq_size, dim=0)
 
-        h = h.unsqueeze(1)  # bs x 1 x mem_size
-        r = r.unsqueeze(1)
-        t = t.unsqueeze(1)
-        hrt = torch.cat([h, r, t], 1)  # bs x 3 x mem_size
-
-        conv_input = hrt.transpose(1, 2)
-        # To make tensor of size 4, where second dim is for input channels
-        conv_input = conv_input.unsqueeze(1)
-        conv_input = self.conv1_bn(conv_input)
-        out_conv = self.conv_layer(conv_input)
-        out_conv = self.conv2_bn(out_conv)
-        out_conv = self.non_linearity(out_conv)
-        out_conv = out_conv.squeeze(-1)
-        out_conv = F.max_pool1d(out_conv, out_conv.size(2)).squeeze(-1)
-        input_fc = self.dropout(out_conv)
+        input_fc = self.dropout(h * r * t) # bs * mem_size
         score = self.fc_layer(input_fc).view(-1)
 
         return -score
@@ -105,8 +86,6 @@ class RMeN(Model):
 
         # regularization
         l2_reg = torch.mean(h ** 2) + torch.mean(t ** 2) + torch.mean(r ** 2)
-        for W in self.conv_layer.parameters():
-            l2_reg = l2_reg + W.norm(2)
         for W in self.fc_layer.parameters():
             l2_reg = l2_reg + W.norm(2)
 
