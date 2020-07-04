@@ -7,7 +7,7 @@ import time
 import datetime
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from builddata import *
-from model_R_MeN_TripleCls_ver1_April2019 import RMeN
+from model_R_MeN_TripleCls_v1 import RMeN
 
 # Parameters
 # ==================================================
