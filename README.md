@@ -33,17 +33,17 @@ This program provides the implementation of our KG embedding model R-MeN as desc
 
 ### Running commands:
 
-With using the CNN decoder:
-
-	$ python train_R_MeN_TripleCls_CNN.py --name WN11 --embedding_dim 50 --num_epochs 30 --batch_size 16 --head_size 1024 --memory_slots 1 --num_heads 3 --attention_mlp_layers 4 --num_filters 1024 --learning_rate 0.0001 --model_name wn11_d50_bs16_f1024_mlp4_hs1024_1_3_2
-		
-	$ python train_R_MeN_TripleCls_CNN.py --name FB13 --embedding_dim 50 --num_epochs 30 --batch_size 256 --head_size 1024 --memory_slots 1 --num_heads 2 --attention_mlp_layers 4 --num_filters 1024 --learning_rate 0.000005 --model_name fb13_d50_bs256_f1024_mlp4_hs1024_1_2_5
-
 Without using the CNN decoder:
 
 	$ python train_R_MeN_TripleCls.py --name WN11 --embedding_dim 50 --num_epochs 30 --batch_size 16 --head_size 512 --memory_slots 1 --num_heads 4 --attention_mlp_layers 4 --learning_rate 0.0001 --model_name wn11_d50_bs16_mlp4_hs512_1_4_2
 
 	$ python train_R_MeN_TripleCls.py --name FB13 --embedding_dim 50 --num_epochs 30 --batch_size 256 --head_size 1024 --memory_slots 1 --num_heads 1 --attention_mlp_layers 3 --learning_rate 0.000001 --model_name fb13_d50_bs256_mlp3_hs1024_1_1_6
+	
+With using the CNN decoder:
+
+	$ python train_R_MeN_TripleCls_CNN.py --name WN11 --embedding_dim 50 --num_epochs 30 --batch_size 16 --head_size 1024 --memory_slots 1 --num_heads 3 --attention_mlp_layers 4 --num_filters 1024 --learning_rate 0.0001 --model_name wn11_d50_bs16_f1024_mlp4_hs1024_1_3_2
+		
+	$ python train_R_MeN_TripleCls_CNN.py --name FB13 --embedding_dim 50 --num_epochs 30 --batch_size 256 --head_size 1024 --memory_slots 1 --num_heads 2 --attention_mlp_layers 4 --num_filters 1024 --learning_rate 0.000005 --model_name fb13_d50_bs256_f1024_mlp4_hs1024_1_2_5
 
 ## Cite 
 
