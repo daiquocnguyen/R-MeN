@@ -33,7 +33,7 @@ This program provides the implementation of our KG embedding model R-MeN as desc
 
 ### Running commands:
 
-Without using the CNN decoder:
+Without using the CNN decoder (v1):
 
 	$ python train_R_MeN_TripleCls.py --name WN11 --embedding_dim 50 --num_epochs 30 --batch_size 16 --head_size 512 --memory_slots 1 --num_heads 4 --attention_mlp_layers 4 --learning_rate 0.0001 --model_name wn11_d50_bs16_mlp4_hs512_1_4_2
 
