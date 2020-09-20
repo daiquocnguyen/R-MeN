@@ -2,7 +2,7 @@
 	<img src="https://github.com/daiquocnguyen/R-MeN/blob/master/rmen_logo.png">
 </p>
 
-# Transformer-based Relational Memory for Knowledge Graph Embeddings<a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fdaiquocnguyen%2FR-MeN%2Fblob%2Fmaster%2FREADME.md"><img alt="Twitter" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fdaiquocng"></a>
+# A Transformer-based Memory Network for Knowledge Graph Embeddings<a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fdaiquocnguyen%2FR-MeN%2Fblob%2Fmaster%2FREADME.md"><img alt="Twitter" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fdaiquocng"></a>
 
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/daiquocnguyen/R-MeN"><a href="https://github.com/daiquocnguyen/R-MeN/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/daiquocnguyen/R-MeN"></a>
 <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/daiquocnguyen/R-MeN">
@@ -11,7 +11,7 @@
 <a href="https://github.com/daiquocnguyen/R-MeN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/daiquocnguyen/R-MeN"></a>
 <img alt="GitHub" src="https://img.shields.io/github/license/daiquocnguyen/R-MeN">
 
-This program provides the implementation of our KG embedding model R-MeN as described in [the paper](https://www.aclweb.org/anthology/2020.acl-main.313/). Our proposed R-MeN utilizes transformer-based memory networks to effectively capture potential dependencies among relations and entities in knowledge graphs.
+This program provides the implementation of our KG embedding model R-MeN as described in [the paper](https://www.aclweb.org/anthology/2020.acl-main.313/). Our proposed R-MeN utilizes a transformer-based memory network to effectively capture potential dependencies among relations and entities in knowledge graphs.
         
 <p align="center">
 	<img src="https://github.com/daiquocnguyen/R-MeN/blob/master/rmen.png" width="350">
