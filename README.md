@@ -11,7 +11,7 @@
 <a href="https://github.com/daiquocnguyen/R-MeN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/daiquocnguyen/R-MeN"></a>
 <img alt="GitHub" src="https://img.shields.io/github/license/daiquocnguyen/R-MeN">
 
-This program provides the implementation of our KG embedding model R-MeN as described in [the paper](https://www.aclweb.org/anthology/2020.acl-main.313/). Our proposed R-MeN utilizes a transformer-based memory network to effectively capture potential dependencies among relations and entities in knowledge graphs.
+This program provides the implementation of our KG embedding model R-MeN as described in [the paper](https://www.aclweb.org/anthology/2020.acl-main.313/). R-MeN utilizes a transformer-based memory network to model (head entity, relation, tail entity) in knowledge graphs.
         
 <p align="center">
 	<img src="https://github.com/daiquocnguyen/R-MeN/blob/master/rmen.png" width="350">
