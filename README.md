@@ -51,7 +51,7 @@ Please cite the paper whenever R-MeN is used to produce published results or inc
 
 	@inproceedings{Nguyen2020RMeN,
 		author={Dai Quoc Nguyen and Tu Dinh Nguyen and Dinh Phung},
-		title={{A Relational Memory-based Embedding Model for Triple Classification and Search Personalization}},
+		title={A Relational Memory-based Embedding Model for Triple Classification and Search Personalization},
 		booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
 		pages={3429–-3435},
 		year={2020}
