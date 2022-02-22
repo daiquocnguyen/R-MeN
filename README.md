@@ -2,7 +2,7 @@
 	<img src="https://github.com/daiquocnguyen/R-MeN/blob/master/rmen_logo.png">
 </p>
 
-# Transformer for Knowledge Graph Embeddings<a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fdaiquocnguyen%2FR-MeN%2Fblob%2Fmaster%2FREADME.md"><img alt="Twitter" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fdaiquocng"></a>
+# Transformer-based Memory Networks for Knowledge Graph Embeddings<a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fdaiquocnguyen%2FR-MeN%2Fblob%2Fmaster%2FREADME.md"><img alt="Twitter" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fdaiquocng"></a>
 
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/daiquocnguyen/R-MeN"><a href="https://github.com/daiquocnguyen/R-MeN/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/daiquocnguyen/R-MeN"></a>
 <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/daiquocnguyen/R-MeN">
